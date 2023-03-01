@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+
+
+    <style>
+        body
+        {
+            background-color: #EEE9DA;
+            overflow: hidden;
+        }
+
+        #navbar
+        {
+            width: 100vw;
+            height: 8vh;
+            background-color: #6096B4;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            border-top: medium solid #BDCDD6;
+        }
+        #navbar button
+        {
+            width: 33%;
+            height: 100%;
+
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
+
+        #content
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 95vh;
+        }
+        #content #home
+        {
+            overflow-y: scroll;
+            width: 100vw;
+            height: 92vh;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-collapse: collapse;
+        }
+        #home .post 
+        {
+            width: 49%;
+            display: inline-block;
+            border: thin solid #BDCDD6;
+        }
+        #home .post img
+        {
+            width: 100%;
+        }
+
+        #home #post-content
+        {
+            z-index: 1;
+            background-color: #EEE9DA;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 92vh;
+        }
+        #post-content #backbutton
+        {
+            width: 100vw;
+            height: 5vh;
+            top: 1em;
+            left: 1em;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    
+    <div id="content">
+        <div id="home">
+
+            
+
+            <div class="post" onclick="showpost(0)">
+                <img src="./post.jpg" alt="post placeholder">
+                <h2>Post 1</h2>     
+            </div>
+            <div class="post" onclick="showpost(1)">
+                <img src="./post.jpg" alt="post placeholder">
+                <h2>Post 2</h2>     
+            </div>
+            <div class="post" onclick="showpost(2)">
+                <img src="./post.jpg" alt="post placeholder">
+                <h2>Post 3</h2>
+            </div>
+            <div class="post" onclick="showpost(3)">
+                <img src="./post.jpg" alt="post placeholder">
+                <h2>Post 4</h2>
+            </div>
+            <div class="post" onclick="showpost(4)">
+                <img src="./post.jpg" alt="post placeholder">
+                <h2>Post 5</h2>
+            </div>
+            <div class="post" onclick="showpost(5)">
+                <img src="./post.jpg" alt="post placeholder">
+                <h2>Post 6</h2>     
+            </div>
+
+        </div>
+    </div>
+
+    <div id="navbar">
+        <button>Profile</button>
+        <button>Home</button>
+        <button>Diets</button>
+    </div>
+
+
+</body>
+
+
+<script>
+
+    const postcaption = 
+    [
+        "this is one",
+        "this is two",
+        "this is three",
+        "this is four",
+        "this is five",
+        "this is six"
+    ]
+
+    function showpost(i)     
+    {
+        
+        const home = document.getElementById("home");
+        const postcontent = document.createElement("div");
+        postcontent.setAttribute("id", "post-content");
+        const backbutton = document.createElement("button");
+        backbutton.setAttribute("id", "backbutton");
+        backbutton.addEventListener("click", ()=>
+        {
+            const home = document.getElementById("home");
+            const postcontent = document.getElementById("post-content");
+            home.removeChild(postcontent);
+        });
+        postcontent.appendChild(backbutton);
+
+        const content = document.createElement("p");
+        postcontent.appendChild(content);
+        content.innerText = postcaption[i];
+        home.appendChild(postcontent);
+    }
+</script>
+
+
+</html>
